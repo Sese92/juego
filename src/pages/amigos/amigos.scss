@@ -1,0 +1,25 @@
+page-amigos {
+    .fondo {
+        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+    }
+    .h1{
+        top: 40px;
+        font-size:40px;
+        font-family: DINCondensed;
+    }
+    .atras{
+        color:white;
+        width: 30px;
+        height: 30px;
+    }
+    .addfriend{
+        width: 70px;
+        height: 70px;
+        margin-right: 11px;
+    }
+    .textoadd{
+        font-family: DINCondensed;
+        font-size: 20px;
+        margin-top: -3px;
+    }
+}

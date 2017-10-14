@@ -1,0 +1,13 @@
+// Roboto Font
+// Google
+// Apache License, version 2.0
+// http://www.apache.org/licenses/LICENSE-2.0.html
+
+$DINCondensed-font-path: $font-path !default;
+
+@font-face {
+  font-family: "DINCondensed";
+  font-style: normal;
+  font-weight: bold;
+  src: local("DINCondensed-Bold"), url("#{$DINCondensed-font-path}/DINCondensed-Bold.woff") format("woff"), url("#{$DINCondensed-font-path}/DINCondensed-Bold.ttf") format("truetype");
+}

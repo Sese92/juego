@@ -1,0 +1,45 @@
+
+<ion-content padding class="fondo">
+    <button class="logout" (click)="logout()">
+        Cerrar Sesión
+      </button>
+  <ion-grid>
+    <ion-row class="fila">
+    <ion-col align="center">
+    </ion-col>
+    <ion-col align="center">
+      <button class="boton" [navPush]="elegir">JUGAR</button>
+    </ion-col>
+    <ion-col align="center">
+    </ion-col>
+  </ion-row>
+  <ion-row class="fila1">
+    <ion-col align="center">
+      <img src="/android_asset/www/assets/images/ranking.png" class="imagenes" [navPush]="ranking">
+    </ion-col>
+    <ion-col align="center">
+        <img src="/android_asset/www/assets/images/amigos.png" class="amigos" [navPush]="amigos">        
+    </ion-col>
+    <ion-col align="center">
+      <img src="/android_asset/www/assets/images/foro.png" class="foro" [navPush]="foro">        
+  </ion-col>
+    <ion-col align="center">
+      <img src="/android_asset/www/assets/images/perfil.png" class="perfil" [navPush]="perfil">
+    </ion-col>
+  </ion-row>
+  <ion-row class="filatexto">
+    <ion-col align="center" [navPush]="ranking">
+      RANKING
+    </ion-col>
+    <ion-col align="center" [navPush]="amigos">
+      AMIGOS
+    </ion-col>
+    <ion-col align="center" [navPush]="foro">
+      FORO
+    </ion-col> 
+    <ion-col align="center" [navPush]="perfil">
+      PERFIL
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+</ion-content>

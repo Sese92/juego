@@ -1,0 +1,36 @@
+<ion-content padding class="fondo">
+    
+<header>
+  <ion-grid>
+    <ion-row>
+        <ion-col>
+                <img src="/android_asset/www/assets/images/atras.png" (click)="atras()" class="atras">
+        </ion-col>
+        <ion-col>
+                <h1 class="h1" align="center">¿Dónde quieres jugar?</h1>                             
+        </ion-col>
+        <ion-col>
+        </ion-col>
+    </ion-row>
+</ion-grid> 
+</header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col align="center">
+          <img src="/android_asset/www/assets/images/Earth.png" class="earth">            
+        </ion-col>
+        <ion-col align="center">
+          <img src="/android_asset/www/assets/images/Earth_Continents.png" class="continents" [navPush]="continentes">
+        </ion-col>                        
+      </ion-row>
+      <ion-row class="filatexto">
+          <ion-col align="center">
+            TODO EL MUNDO
+          </ion-col>
+          <ion-col align="center" [navPush]="continentes">
+            POR CONTINENTES
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

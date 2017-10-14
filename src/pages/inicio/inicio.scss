@@ -1,0 +1,52 @@
+page-inicio {
+    
+    .fondo {
+        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+    }
+    .logout{
+        background-color: red;
+        color:black;
+        margin-left: 85%;
+        border-radius: 30px;
+        height: 40px;
+        width: 140px;
+        font-size:20px;
+    }
+    .fila{
+        margin-top:130px;
+    }
+    .fila1{
+        margin-top:45px;
+        height: 150px;
+    }
+    .imagenes{
+        width: 190px;
+        height: 167px;
+    }
+    .boton{
+        width: 250px;
+        height: 250px;
+        background: url(../assets/images/tierra.png);
+        font-family: DINCondensed;                
+        font-size: 65px;
+        font-style: bold;
+    }
+    .perfil{
+        width: 150px;
+        height: 150px;
+    }
+    .amigos{
+        width: 150px;
+        height: 170px;
+    }
+    .foro{
+        height: 160px;
+        width: 160px;
+
+    }
+    .filatexto{
+        font-family: DINCondensed;        
+        font-size: 30px;
+    }
+
+}

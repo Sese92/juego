@@ -1,0 +1,31 @@
+page-elegir {
+    font-family: DINCondensed;
+    
+    .fondo {
+        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+    }
+    .atras{
+        color:white;
+        width: 30px;
+        height: 30px;
+    }
+   
+    .h1{
+        top: 40px;
+        font-size:40px;
+    }
+    .earth{
+        margin-top:70px;
+        width: 320px;
+        height: 320px;
+    }
+    .continents{
+        margin-top:70px;
+        width: 550px;
+        height: 320px;
+    }
+
+    .filatexto{
+        font-size: 40px;
+    }
+}

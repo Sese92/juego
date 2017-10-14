@@ -1,0 +1,26 @@
+page-continentes {
+    font-family: DINCondensed;
+    
+    .fondo {
+        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+    }
+    .atras{
+        color:white;
+        width: 30px;
+        height: 30px;
+    }
+    .h1{
+        top: 40px;
+        font-size:40px;
+    }
+    .imagenes{
+        width: 120px;
+        height: 120px;
+    }
+    .fila{
+        margin-top: 25px;
+    }
+    .filatexto{
+        font-size: 25px;
+    }
+}
