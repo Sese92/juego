@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content class="fondo">
+  <form [formGroup]="myForm" (ngSubmit)="registrar()">
+      
+        <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-label stacked>Nombre de usuario:</ion-label>
+          <ion-input  formControlName="userName" type="text" placeholder="Nombre de Usuario"></ion-input>
+        </ion-item>
+              
+        <ion-item>
+          <ion-icon name="mail" item-left></ion-icon>
+          <ion-label stacked>Correo electrónico:</ion-label>
+          <ion-input formControlName="email" type="email" placeholder="Email" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="globe" item-left></ion-icon>
+          <ion-label stacked>País:</ion-label>
+          <ion-input formControlName="pais" type="text" placeholder="Pais" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="eye" item-left></ion-icon>
+          <ion-label stacked>Contraseña:</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Mínimo 6 caracteres"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="eye" item-left></ion-icon>
+          <ion-label stacked>Confirmar contraseña:</ion-label>
+          <ion-input formControlName="passwordConfirmation" type="password" placeholder="Mínimo 6 caracteres"></ion-input>
+        </ion-item>       
+     
+      <div>
+          <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+      </div>
+  </form>
+</ion-content>

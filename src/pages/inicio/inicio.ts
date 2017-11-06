@@ -32,7 +32,19 @@ export class InicioPage {
     const alert = this.alertCtrl.create({
       title: 'Cerrar Sesión',
       subTitle: '¿Estás seguro de que quieres cerrar sesión?',
-      buttons: ['SI', 'NO']
+      buttons: [
+        {
+          text: "SI",
+          role: 'SI',
+          handler : () => {
+            this.navCtrl.popToRoot();
+          }
+        },
+        {
+          text: "NO",
+          role: 'NO',
+        }
+      ]
     });
     alert.present();
   }
