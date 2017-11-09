@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase-config';
 
@@ -18,6 +18,7 @@ import { AmigosPage } from '../pages/amigos/amigos';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ForoPage } from '../pages/foro/foro';
 import { HomePage } from '../pages/home/home';
+import { RegistroPage } from '../pages/registro/registro'
 
 
 
@@ -31,7 +32,8 @@ import { HomePage } from '../pages/home/home';
     AmigosPage,
     PerfilPage,
     ForoPage,
-    HomePage
+    HomePage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
@@ -50,11 +52,13 @@ import { HomePage } from '../pages/home/home';
     AmigosPage,
     PerfilPage,
     ForoPage,
-    HomePage
+    HomePage,
+    RegistroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -5,6 +5,7 @@ import { RegistroPage } from '../registro/registro';
 import { InicioPage } from '../inicio/inicio';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @IonicPage()
 @Component({
@@ -21,12 +22,13 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               private autenticar: AngularFireAuth,
               public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController
+              public loadingCtrl: LoadingController,
              ){
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InicioPage');
+    //var estado = firebase.auth().currentUser.email;
+    //console.log(estado);    
   }
 
   public iniciar(){

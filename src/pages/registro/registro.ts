@@ -3,7 +3,7 @@ import { IonicPage , NavController, LoadingController, Loading, AlertController}
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase} from 'angularfire2/database/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { InicioPage } from '../inicio/inicio';
+import { HomePage } from '../home/home';
 import { User, Amigo } from '../../modelos/usuario';
 
 @IonicPage()
@@ -51,7 +51,7 @@ export class RegistroPage{
                                 [],
                                 this.amigos = []);
         this.fireDatabase.database.ref('usuarios/' + this.myForm.value.userName).set(this.usuario);
-        this.navCtrl.push(InicioPage);
+        this.navCtrl.push(HomePage);
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({

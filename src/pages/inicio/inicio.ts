@@ -6,7 +6,9 @@ import { AmigosPage } from '../amigos/amigos';
 import { PerfilPage } from '../perfil/perfil';
 import { ForoPage } from '../foro/foro';
 
-
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -19,15 +21,26 @@ export class InicioPage {
   public amigos = AmigosPage;
   public perfil = PerfilPage;
   public foro = ForoPage;
+  private currentUser: firebase.User;
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public afDB: AngularFireDatabase,
+    public auth: AngularFireAuth,) {
+      afDB.list('usuarios').valueChanges().subscribe(console.log);
+      auth.authState.subscribe((user: firebase.User) => this.currentUser = user);
+      /*const afList = afDB.list('usuarios');
+      afList.push({ name: 'item' });
+      const listObservable = afList.snapshotChanges();
+      listObservable.subscribe();*/
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InicioPage');
+    var estado = firebase.auth().currentUser.email;
+    console.log(estado);    
   }
+
   logout(){
     const alert = this.alertCtrl.create({
       title: 'Cerrar Sesión',
@@ -37,6 +50,7 @@ export class InicioPage {
           text: "SI",
           role: 'SI',
           handler : () => {
+            this.auth.auth.signOut();
             this.navCtrl.popToRoot();
           }
         },
