@@ -42,13 +42,15 @@ export class PerfilPage {
     var correo = firebase.auth().currentUser.email;
     console.log( 'Correo ' + correo);  
     
-    for (var i = 0; i < this.usuarios.length; i++) {
-        if(this.usuarios[i].email===correo){
-          this.posicion=i;
-        }   
+    //for (var i = 0; i < this.usuarios.length; i++) {
+    //    if(this.usuarios[i].email===correo){
+    //      this.posicion=i;
+    //    }   
+
+    console.log( 'Usuarios 2 '+ this.afDB.list('usuarios'));
     }
-    console.log("La posicion es " + this.posicion);
-  }
+    //console.log("La posicion es " + this.posicion);
+  //}
   atras(){
     this.navCtrl.pop();
   }
