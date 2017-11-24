@@ -10,7 +10,7 @@ export class ContinentesPage {
   constructor(public navCtrl: NavController) {
 
   }
-  atras(){
+   public atras(){
     this.navCtrl.pop();
   }
 

@@ -26,7 +26,7 @@ export class HomePage {
              ){
   }
 
-  ionViewDidLoad() {
+    public ionViewDidLoad() {
     //var estado = firebase.auth().currentUser.email;
     //console.log(estado);    
   }

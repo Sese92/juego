@@ -12,10 +12,10 @@ export class ElegirPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  public ionViewDidLoad() {
     console.log('ionViewDidLoad ElegirPage');
   }
-  atras(){
+  public atras(){
     this.navCtrl.pop();
   }
 

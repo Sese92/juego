@@ -30,18 +30,14 @@ export class InicioPage {
     public auth: AngularFireAuth,) {
       afDB.list('usuarios').valueChanges().subscribe(console.log);
       auth.authState.subscribe((user: firebase.User) => this.currentUser = user);
-      /*const afList = afDB.list('usuarios');
-      afList.push({ name: 'item' });
-      const listObservable = afList.snapshotChanges();
-      listObservable.subscribe();*/
   }
 
-  ionViewDidLoad() {
+  public ionViewDidLoad() {
     var estado = firebase.auth().currentUser.email;
     console.log(estado);    
   }
 
-  logout(){
+   public logout(){
     const alert = this.alertCtrl.create({
       title: 'Cerrar Sesión',
       subTitle: '¿Estás seguro de que quieres cerrar sesión?',

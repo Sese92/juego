@@ -18,10 +18,10 @@ export class AmigosPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  public ionViewDidLoad() {
     console.log('ionViewDidLoad AmigosPage');
   }
-  atras(){
+  public atras(){
     this.navCtrl.pop();
   }
 
