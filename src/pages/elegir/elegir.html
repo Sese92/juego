@@ -18,14 +18,14 @@
     <ion-grid>
       <ion-row>
         <ion-col align="center">
-          <img src="assets/images/Earth.png" class="earth">            
+          <img src="assets/images/Earth.png" class="earth" [navPush]="mundo">            
         </ion-col>
         <ion-col align="center">
           <img src="assets/images/Earth_Continents.png" class="continents" [navPush]="continentes">
         </ion-col>                        
       </ion-row>
       <ion-row class="filatexto">
-          <ion-col align="center">
+          <ion-col align="center" [navPush]="mundo">
             TODO EL MUNDO
           </ion-col>
           <ion-col align="center" [navPush]="continentes">

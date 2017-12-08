@@ -18,10 +18,10 @@ export class ForoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+ public ionViewDidLoad() {
     console.log('ionViewDidLoad ForoPage');
   }
-  atras(){
+ public atras(){
     this.navCtrl.pop();
   }
 

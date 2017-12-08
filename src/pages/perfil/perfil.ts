@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { config } from 'localforage';
 /**
  * Generated class for the PerfilPage page.
  *
@@ -15,13 +19,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private currentUser: firebase.User;
+  public infoUser:any;
+  public usuarios:Array<any>;
+  public posicion:number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public afDB: AngularFireDatabase,
+              public auth: AngularFireAuth,) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
-  }
-  atras(){
+  public ionViewDidLoad() {
+    this.afDB.list('usuarios').valueChanges().subscribe(
+      result => {
+        this.usuarios = result;
+        console.log( 'Usuarios '+this.usuarios);
+      }, 
+      error =>{
+        console.log("ERROR")
+      });
+    this.auth.authState.subscribe((user: firebase.User) => this.currentUser = user);
+    var correo = firebase.auth().currentUser.email;
+    console.log( 'Correo ' + correo);  
+      
+    //for (var i = 0; i < this.usuarios.length; i++) {
+    //    if(this.usuarios[i].email===correo){
+    //      this.posicion=i;
+    //    }   
+
+    console.log( 'Usuarios 2 '+ this.afDB.list('usuarios'));
+    }
+    //console.log("La posicion es " + this.posicion);
+  //}
+   public atras(){
     this.navCtrl.pop();
   }
 

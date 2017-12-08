@@ -5,57 +5,67 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../environments/firebase-config';
 
 import { MyApp } from './app.component';
-import { ContinentesPage } from '../pages/continentes/continentes';
 import { InicioPage } from '../pages/inicio/inicio';
 import { ElegirPage } from '../pages/elegir/elegir';
+import { JugartodoPage} from '../pages/elegir/jugartodo/jugartodo'
+import { ContinentesPage } from '../pages/elegir/continentes/continentes';
 import { RankingPage } from '../pages/ranking/ranking';
 import { AmigosPage } from '../pages/amigos/amigos';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ForoPage } from '../pages/foro/foro';
 import { HomePage } from '../pages/home/home';
-
+import { RegistroPage } from '../pages/registro/registro'
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    ContinentesPage,
     InicioPage,
     ElegirPage,
+    ContinentesPage,
+    JugartodoPage,    
     RankingPage,
     AmigosPage,
     PerfilPage,
     ForoPage,
-    HomePage
+    HomePage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContinentesPage,
     InicioPage,
     ElegirPage,
+    ContinentesPage,
+    JugartodoPage,    
     RankingPage,
     AmigosPage,
     PerfilPage,
     ForoPage,
-    HomePage
+    HomePage,
+    RegistroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    GoogleMaps,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

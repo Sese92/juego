@@ -18,10 +18,10 @@ export class RankingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+   public ionViewDidLoad() {
     console.log('ionViewDidLoad RankingPage');
   }
-  atras(){
+ public atras(){
     this.navCtrl.pop();
   }
 }

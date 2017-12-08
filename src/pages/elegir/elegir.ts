@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ContinentesPage } from '../continentes/continentes';
+import { ContinentesPage } from './continentes/continentes';
+import { JugartodoPage } from './jugartodo/jugartodo';
 
 @IonicPage()
 @Component({
@@ -9,10 +10,11 @@ import { ContinentesPage } from '../continentes/continentes';
 })
 export class ElegirPage {
   public continentes= ContinentesPage;
+  public mundo = JugartodoPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  public ionViewDidLoad() {
     console.log('ionViewDidLoad ElegirPage');
   }
   atras(){
