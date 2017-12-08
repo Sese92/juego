@@ -10,7 +10,7 @@ import { JugartodoPage } from '../pages/elegir/jugartodo/jugartodo';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  public rootPage:any = JugartodoPage;
+  public rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

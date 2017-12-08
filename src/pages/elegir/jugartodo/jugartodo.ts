@@ -38,6 +38,9 @@ export class JugartodoPage {
     this.initStreetView();
   }
 
+  atras(){
+    this.navCtrl.pop();
+  }
   getData(){
     return this.http.get(this.database).map ((res: Response) => res.json());
   }
