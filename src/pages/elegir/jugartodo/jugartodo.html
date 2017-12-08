@@ -1,0 +1,44 @@
+<ion-content class="fondo">
+
+    <header>
+        <ion-grid>
+          <ion-row>
+              <ion-col>
+                      <img src="assets/images/atras.png" (click)="atras()" class="atras">
+              </ion-col>
+              <ion-col>
+                      <h1 class="h1" align="center">¡Elige un punto en el mapa!</h1>                             
+              </ion-col>
+              <ion-col>
+              </ion-col>
+          </ion-row>
+      </ion-grid> 
+      </header>
+
+  <div #streetview id="streetview"></div>
+
+  <div #map id="map"></div>
+  
+  <button class="aceptar">Aceptar</button>
+
+  <div class="tiempo">
+    <p class="titulo">Tiempo restante</p>
+  </div>
+
+  <div class="buenapartida" [style.display]="buenapartida ? 'flex' : 'none'">
+    <p class="vaya">¡Bien hecho!</p>
+    <div style="display:block">
+      <p class="puntos">Puntos del turno:</p>
+      <p class="puntos">Puntos totales:</p>
+    </div>
+  </div>
+  <div class="malapartida" [style.display]="malapartida ? 'flex' : 'none'">
+      <p class="vaya">¡Vaya! ¡Un poco lejos!</p>
+      <div style="display:block">
+        <p class="puntos">Puntos del turno:</p>
+        <p class="puntos">Puntos totales:</p>
+      </div>
+    </div>
+
+  <button class="siguiente" [style.display]="siguienteturno ? 'block' : 'none'">Siguiente turno</button>
+</ion-content>

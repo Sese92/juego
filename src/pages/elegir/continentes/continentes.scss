@@ -1,0 +1,28 @@
+page-continentes {
+    font-family: DINCondensed;
+    
+    .fondo {
+        background: #223259;
+    }
+    .atras{
+        width: 30px;
+        height: 30px;
+        filter: invert(100%);
+    }
+    .h1{
+        color: white;
+        top: 40px;
+        font-size:40px;
+    }
+    .imagenes{
+        width: 120px;
+        height: 120px;
+    }
+    .fila{
+        margin-top: 8px;
+    }
+    .filatexto{
+        color: white;
+        font-size: 25px;
+    }
+}
