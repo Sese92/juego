@@ -17,7 +17,7 @@ export class ElegirPage {
   public ionViewDidLoad() {
     console.log('ionViewDidLoad ElegirPage');
   }
-  atras(){
+  public atras(){
     this.navCtrl.pop();
   }
 
