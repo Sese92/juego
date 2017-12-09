@@ -1,17 +1,57 @@
 page-perfil {
     .fondo {
-        background: #223259;
+        background:#223259;
     }
     .h1{
-        color: white;
         top: 40px;
         font-size:40px;
         font-family: DINCondensed;
         
     }
     .atras{
-        filter:invert(100%);        
+        color:white;
         width: 30px;
         height: 30px;
+    }
+    .contentFoto{
+        .foto{
+            max-width: 100%;
+            border: 0;
+            /* margin-left: 10%; */
+            width: 80%;
+            height: 80%;
+        }    
+    }
+    .puntos{
+        margin: 0%;
+        font-size: x-small;
+        font-style: oblique;
+        font-weight: 600;
+        color: aliceblue;
+    }
+   
+    .caja{
+        margin: 2%;
+        padding: 2%;
+        background-color: #e6dfdf;
+        border-width: 2px;
+        border-color: #CDDC39;
+        border-style: solid;
+        border-radius: 6px;
+    }
+    .letra{
+        color:#01673e;
+        font-weight: 800;
+    }
+
+    .ojo{
+        height: 100%;
+        width: 100%;
+        background-color: #e6dfdf;    
+    }
+
+    ion-icon{
+        display: inline-block;
+        font-size: x-large;
     }
 }
