@@ -6,12 +6,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { config } from 'localforage';
 import { updateDate } from 'ionic-angular/util/datetime-util';
-/**
- * Generated class for the PerfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({

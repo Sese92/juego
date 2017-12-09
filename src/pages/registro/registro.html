@@ -51,6 +51,6 @@
       </form>
       
       <div>
-          <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+          <button ion-button (click)="registrar()" block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
 </ion-content>
