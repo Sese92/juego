@@ -31,9 +31,13 @@ page-jugartodo {
     }
     .h1{
         color: white;
-        top: 40px;
         font-size:40px;
         font-family: DINCondensed;
+    }
+    .advertencia{
+        color: rgb(194, 194, 194);
+        margin: 0px;
+        width: 500px;
     }
       .aceptar{
           font-size: 25px;
@@ -54,11 +58,12 @@ page-jugartodo {
       .tiempo {
         color: white;
         text-align: center;
-        font-size: 25px;
+        font-size: 20px;
         margin-top: 1%;
         margin-left: 67%;
+        padding: 0px;
         width: 32%;
-        height: 20%;
+        height: 15%;
         border-width: 2px;
         border-color: white;
         border-style: solid;
@@ -71,12 +76,15 @@ page-jugartodo {
           border-radius: 20px;
           width: 500px;
           height: 100px;
-          margin-top: -100px;
+          margin-top: -75px;
           margin-left: 6%;
+          display: flex;
+          
 
           .vaya{
             padding-top: 18px;
             font-size: 20px;
+            font-weight: bold;
             }
             .puntos{
                 margin-left: 40px;
@@ -89,12 +97,15 @@ page-jugartodo {
         border-radius: 20px;
         width: 500px;
         height: 100px;
-        margin-top: -100px;
+        margin-top: -75px;
         margin-left: 6%;
+        display: flex;
 
         .vaya{
           padding-top: 18px;
           font-size: 20px;
+          font-weight: bold;
+          
           }
           .puntos{
               margin-left: 40px;

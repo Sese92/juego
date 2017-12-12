@@ -23,10 +23,13 @@ import {
 export class JugartodoPage {
   public buenapartida: boolean = false;
   public malapartida: boolean = false;
-  public siguienteturno: boolean = false;
+  public siguiente: boolean = false;
   private database = "http://localhost:3000/europa";
   public lista;
   public datos;
+  public marcador;
+  public longitudmarcador;
+  public latitudmarcador;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -66,24 +69,37 @@ export class JugartodoPage {
   }
 
   initMap() {
-    
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 0, lng: 0},
-      zoom: 1,
+      center: {lat: 54, lng: 25},
+      zoom: 3,
       mapTypeId: 'hybrid'
     });
-    map.addListener('click', function(event) {
-      this.addMarker(event.LatLng);
+
+    map.addListener('rightclick', function(e){
+      placeMarkerAndPanTo(e.latLng, map);
+    
     });
-  }
-  
-  
-  addMarker(LatLng, map) {
-    var marker = new google.maps.Marker({
-      position: LatLng,
-      map: map
-    });
-  }
+    var marker;
+    function placeMarkerAndPanTo(latLng, map) {
+      if (marker) {
+        marker.setPosition(latLng);
+      } else {
+        marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          draggable: true,
+        });
+      }
+      console.log("lat y long: " + latLng);
+
+
+    }
+    }
+
+
+    siguienteturno(){
+      location.reload();
+    }
   
 
 /*   aceptar(){

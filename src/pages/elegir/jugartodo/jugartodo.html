@@ -7,7 +7,8 @@
                       <img src="assets/images/atras.png" (click)="atras()" class="atras">
               </ion-col>
               <ion-col>
-                      <h1 class="h1" align="center">¡Elige un punto en el mapa!</h1>                             
+                      <h1 class="h1" align="center">¡Elige un punto en el mapa!</h1>
+                      <p class="advertencia" align="center">(Utiliza el botón izquierdo para colocar el marcador)</p>                           
               </ion-col>
               <ion-col>
               </ion-col>
@@ -22,7 +23,8 @@
   <button class="aceptar">Aceptar</button>
 
   <div class="tiempo">
-    <p class="titulo">Tiempo restante</p>
+    <p style="margin:0px; margin-top: 2%">Tiempo restante</p>
+    <p>30 segundos</p>
   </div>
 
   <div class="buenapartida" [style.display]="buenapartida ? 'flex' : 'none'">
@@ -40,5 +42,5 @@
       </div>
     </div>
 
-  <button class="siguiente" [style.display]="siguienteturno ? 'block' : 'none'">Siguiente turno</button>
+  <button class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Siguiente turno</button>
 </ion-content>
