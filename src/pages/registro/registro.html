@@ -1,17 +1,28 @@
 
-<ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>Registro</ion-title>
-  </ion-navbar>
-</ion-header>
- 
+
 <ion-content class="fondo">
-  <form [formGroup]="myForm" (ngSubmit)="registrar()">
+    <header>
+        <ion-grid>
+                <ion-row>
+                    <ion-col>
+                            <img src="assets/images/atras.png" (click)="atras()" class="atras">
+                    </ion-col>
+                    <ion-col>
+                            <h1 class="h1" align="center">Registro</h1>                             
+                    </ion-col>
+                    <ion-col>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>    
+    
+  </header>
+  
+  <form class="form" [formGroup]="myForm" (ngSubmit)="registrar()">
       
         <ion-item>
           <ion-icon name="person" item-left></ion-icon>
           <ion-label stacked>Nombre de usuario:</ion-label>
-          <ion-input  formControlName="userName" type="text" placeholder="Nombre de Usuario"></ion-input>
+          <ion-input formControlName="userName" type="text" placeholder="Nombre de Usuario"></ion-input>
         </ion-item>
               
         <ion-item>
@@ -37,9 +48,9 @@
           <ion-label stacked>Confirmar contraseña:</ion-label>
           <ion-input formControlName="passwordConfirmation" type="password" placeholder="Mínimo 6 caracteres"></ion-input>
         </ion-item>       
-     
+      </form>
+      
       <div>
-          <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+          <button ion-button (click)="registrar()" block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
-  </form>
 </ion-content>

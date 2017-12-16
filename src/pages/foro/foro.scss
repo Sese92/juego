@@ -1,15 +1,16 @@
 page-foro {
     .fondo {
-        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+        background: #223259;
     }
     .h1{
+        color: white;
         top: 40px;
         font-size:40px;
         font-family: DINCondensed;
         
     }
     .atras{
-        color:white;
+        filter:invert(100%);        
         width: 30px;
         height: 30px;
     }

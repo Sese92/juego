@@ -1,25 +1,26 @@
 page-ranking {
     .fondo {
-        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
-    }
-    .atras{
-        color:white;
-        width: 30px;
-        height: 30px;
+        background: #223259;
     }
     .grid2{
-        width: 100%;
-        margin-left: 5%;
+        width: 80%;
+        margin-left: 10%;
     }
     .h1{
+        color: white;
         top: 40px;
         font-size:40px;
         font-family: DINCondensed;
         
     }
+    .atras{
+        filter:invert(100%);        
+        width: 30px;
+        height: 30px;
+    }
+
     .titulos{
-        width: 900px;
-        margin-left:4%;
+        width: 100%;
         background-color: rgb(201, 201, 201);
         font-family: DINCondensed;
         font-size: 30px;
@@ -28,8 +29,7 @@ page-ranking {
         border-top-right-radius: 20px;        
     }
     .fila{
-        width: 900px;
-        margin-left:4%;        
+        width: 100%;
         background-color: rgb(255, 255, 255);
         font-size: 20px;
         border-bottom-left-radius: 20px;

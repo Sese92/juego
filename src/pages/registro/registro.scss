@@ -1,3 +1,48 @@
-page-register {
+page-registro {
+    .fondo {
+        background: #223259;
+    }
+    .h1{
+        top: 40px;
+        font-size:40px;
+        font-family: DINCondensed;
+        color: white;
+    }
+    .atras{
+        filter: invert(100%);
+        width: 30px;
+        height: 30px;
+    }
+    .form{
+        width: 50%;
+        margin-left:25%;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: white;
+        padding-bottom: 10px;
+    }
+    .item-md{
+        background: #223259;
+        width: 75%;
+        margin-left: 10%; 
+    }
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md{
+        color:white;
+    }
+    .item-input-has-focus .label-md[stacked]{ 
+        color: white;
+    }
+    .icon{
+        filter: invert(100%);
+    }
+    .button{
+        margin-left: 30%;
+        color: black;
+        font-weight: bold;
+        background-color: #32db64;
+        width: 40%;
+        margin-top: 3%;
+        border-radius: 30px;
+    }
     
 }

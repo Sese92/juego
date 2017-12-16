@@ -91,4 +91,7 @@ export class RegistroPage{
       passwordConfirmation: ['', Validators.required]
     });
   }
+  atras(){
+    this.navCtrl.pop();
+  }
 }

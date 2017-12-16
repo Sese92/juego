@@ -2,14 +2,15 @@ page-continentes {
     font-family: DINCondensed;
     
     .fondo {
-        background:linear-gradient(to bottom, #0a7500 10%, #54f86a 90%);
+        background: #223259;
     }
     .atras{
-        color:white;
         width: 30px;
         height: 30px;
+        filter: invert(100%);
     }
     .h1{
+        color: white;
         top: 40px;
         font-size:40px;
     }
@@ -18,9 +19,10 @@ page-continentes {
         height: 120px;
     }
     .fila{
-        margin-top: 25px;
+        margin-top: 8px;
     }
     .filatexto{
+        color: white;
         font-size: 25px;
     }
 }

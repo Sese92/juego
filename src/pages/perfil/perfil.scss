@@ -6,10 +6,11 @@ page-perfil {
         top: 40px;
         font-size:40px;
         font-family: DINCondensed;
+        color: white;
         
     }
     .atras{
-        color:white;
+        filter: invert(100%);
         width: 30px;
         height: 30px;
     }
