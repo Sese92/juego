@@ -51,6 +51,14 @@ export class RegistroPage{
                                 [],
                                 this.amigos = []);
         this.fireDatabase.database.ref('usuarios/' + this.myForm.value.userName).set(this.usuario);
+        this.fireDatabase.database.ref('continentes/'+ "AmericaNorte").set("");
+        this.fireDatabase.database.ref('continentes/'+ "AmericaCentral").set("");
+        this.fireDatabase.database.ref('continentes/'+ "AmericaSur").set("");
+        this.fireDatabase.database.ref('continentes/'+ "Europa").set([this.usuario,this.usuario,this.usuario]);
+        this.fireDatabase.database.ref('continentes/'+ "Africa").set("");
+        this.fireDatabase.database.ref('continentes/'+ "Asia").set("");
+        this.fireDatabase.database.ref('continentes/'+ "Oceania").set("");
+        
         this.navCtrl.push(HomePage);
       }, error => {
         this.loading.dismiss().then( () => {

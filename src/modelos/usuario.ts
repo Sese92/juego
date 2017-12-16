@@ -14,3 +14,10 @@ export class Amigo{
         public puntuacion:number
     ){}
 }
+
+export class cordenadar{
+    constructor(
+        public latitud:string,
+        public longitud:number
+    ){}
+}
