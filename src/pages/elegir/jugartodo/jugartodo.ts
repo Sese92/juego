@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {
   GoogleMaps,
@@ -23,17 +22,15 @@ import {
 export class JugartodoPage {
   public buenapartida: boolean = false;
   public malapartida: boolean = false;
-  public siguiente: boolean = false;
-  private database = "http://localhost:3000/europa";
-  public lista;
-  public datos;
+  public siguiente: boolean = true;
   public marcador;
   public longitudmarcador;
   public latitudmarcador;
+  public lugar = {lat: 37.971476, lng: 23.726176}
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public http: Http) {
+    public navParams: NavParams) {
+
   }
 
   ionViewDidLoad(){
@@ -44,23 +41,12 @@ export class JugartodoPage {
   atras(){
     this.navCtrl.pop();
   }
-  getData(){
-    return this.http.get(this.database).map ((res: Response) => res.json());
-  }
   
   initStreetView(){
-    //Consulta la base de datos creada
-    this.getData().subscribe(data => {
-      this.lista = data;
-      this.datos = JSON.parse(JSON.stringify(this.lista));;
-      console.log(this.datos);
-    });
-
-    
-    var lugar = {lat: 37.971476, lng: 23.726176};
+    //Elegir posicion del array de lugares
     var panorama = new google.maps.StreetViewPanorama(
         document.getElementById('streetview'), {
-          position: lugar,
+          position: this.lugar,
           pov: {
             heading: 100,
             pitch: 0
@@ -76,35 +62,64 @@ export class JugartodoPage {
     });
 
     map.addListener('rightclick', function(e){
-      placeMarkerAndPanTo(e.latLng, map);
+      placeMarker(e.latLng, map);
     
     });
     var marker;
-    function placeMarkerAndPanTo(latLng, map) {
+
+    function placeMarker(latLng, map) {
       if (marker) {
         marker.setPosition(latLng);
       } else {
         marker = new google.maps.Marker({
           position: latLng,
           map: map,
-          draggable: true,
         });
       }
-      console.log("lat y long: " + latLng);
 
+      var latitudlongitud = JSON.stringify(latLng);
+      let latlong = JSON.parse(latitudlongitud);
+      var latitud = latlong.lat;
+      var longitud = latlong.lng;
 
+      //this.latitudmarcador = latitud;
+      //this.longitudmarcador = longitud;
+           
+      console.log("latlng: " + latLng);
+      
     }
+    }
+
+    ponermarcador(){
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: this.lugar,
+        zoom: 4,
+        mapTypeId: 'hybrid'
+      });
+
+      var marker1 = new google.maps.Marker({
+        position: this.lugar, //Posicion street view
+        map: map,
+        icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      });
+      var marker2 = new google.maps.Marker({
+        position: {lat: 40, lng: 30}, //Posicion marcador
+        map: map,
+      });      
     }
 
 
     siguienteturno(){
-      location.reload();
+          this.initStreetView();
+          this.initMap();
     }
-  
 
-/*   aceptar(){
-    for (var i = 0; i < 4; i++) {
-      Parar el tiempo
+
+   aceptar(){
+      this.ponermarcador();
+   }
+
+/*
       poner marcador en lat1, lon1
       Trazar una linea
       this.getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2);
