@@ -8,7 +8,7 @@
               </ion-col>
               <ion-col>
                       <h1 class="h1" align="center">¡Elige un punto en el mapa!</h1>
-                      <p class="advertencia" align="center">(Utiliza el botón izquierdo para colocar el marcador)</p>                           
+                      <p class="advertencia" align="center">(Utiliza el botón derecho para colocar el marcador)</p>                           
               </ion-col>
               <ion-col>
               </ion-col>
@@ -22,25 +22,19 @@
   
   <button class="aceptar" (click)="aceptar()">Aceptar</button>
 
-  <div class="tiempo">
-    <p style="margin:0px; margin-top: 2%">Tiempo restante</p>
-    <p>30 segundos</p>
-  </div>
-
   <div class="buenapartida" [style.display]="buenapartida ? 'flex' : 'none'">
     <p class="vaya">¡Bien hecho!</p>
-    <div style="display:block">
-      <p class="puntos">Puntos del turno:</p>
-      <p class="puntos">Puntos totales:</p>
+    <div style="display:flex">
+      <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
     </div>
   </div>
   <div class="malapartida" [style.display]="malapartida ? 'flex' : 'none'">
       <p class="vaya">¡Vaya! ¡Un poco lejos!</p>
-      <div style="display:block">
-        <p class="puntos">Puntos del turno:</p>
-        <p class="puntos">Puntos totales:</p>
+      <div style="display:flex">
+        <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
       </div>
     </div>
 
-  <button class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Siguiente turno</button>
+  <button *ngIf="turno != 4"class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Siguiente turno</button>    
+  <button *ngIf="turno == 4" class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Finalizar</button>
 </ion-content>

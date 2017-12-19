@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-/**
- * Generated class for the RankingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,14 +9,43 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ranking.html',
 })
 export class RankingPage {
+  public usuarios: Array<any>;
+  public pais;
+  public mediapuntos;
+  public mejorpuntuacion;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public afDB: AngularFireDatabase,
+  ) {
   }
 
-   public ionViewDidLoad() {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad RankingPage');
-  }
- public atras(){
+    this.afDB.list('usuarios').valueChanges().subscribe(
+      result => {
+        this.usuarios = result;
+        console.log(this.usuarios);
+        this.usuarios = this.usuarios.sort();
+        this.usuarios.forEach(usuario => {
+          var puntuaciones = usuario.puntuaciones;
+
+          puntuaciones = puntuaciones.filter(item => item !== 'null');
+          console.log(puntuaciones);
+          usuario.mejorpuntuacion = Math.min.apply(null,puntuaciones);
+          if(usuario.mejorpuntuacion == "Infinity"){
+          usuario.mejorpuntuacion = "-";
+        }
+
+
+        });
+      },
+      error => {
+        console.log("ERROR")        
+      });
+    }
+
+  atras(){
     this.navCtrl.pop();
   }
 }

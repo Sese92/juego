@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {
   GoogleMaps,
@@ -11,6 +11,9 @@ import {
   Marker,
   LatLng
  } from '@ionic-native/google-maps';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ResultadosPage } from './resultados/resultados';
 
  declare var google: any;
 
@@ -22,31 +25,88 @@ import {
 export class JugartodoPage {
   public buenapartida: boolean = false;
   public malapartida: boolean = false;
-  public siguiente: boolean = true;
+  public siguiente: boolean = false;
   public marcador;
-  public longitudmarcador;
-  public latitudmarcador;
-  public lugar = {lat: 37.971476, lng: 23.726176}
+  public longitudmarcador: number;
+  public latitudmarcador: number;
+  public posicionLugar;
+  public lugares;
+  public latlugar;
+  public lonlugar;
+  public puntostotales: Array<number> = [];
+  public puntospartida;
+  public turno: number = 0;
+  public marker: Marker;
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams) {
-
+    public navParams: NavParams,
+    public afDB: AngularFireDatabase,
+    public auth: AngularFireAuth,
+    public alertCtrl:AlertController) {
   }
 
   ionViewDidLoad(){
-    this.initMap();
-    this.initStreetView();
-  }
+    this.afDB.list('continentes/Europa').valueChanges().subscribe(
+      result => {
+        this.lugares = result;
+        var posicionlugares = Math.floor(Math.random() * 29);
+        var lugarelegido = this.lugares[posicionlugares];
+        this.latlugar = lugarelegido.lat;
+        this.lonlugar = lugarelegido.lon;
+        this.posicionLugar = new google.maps.LatLng(this.latlugar,this.lonlugar);
+        console.log(this.posicionLugar);
+      },
+      error => {
+        console.log("ERROR")
+      });
+      this.empezar();
+    }
+
+    empezar(){
+        const alert = this.alertCtrl.create({
+          title: '¿Empezamos?',
+          buttons: [
+            {
+              text: "¡VAMOS!",
+              handler : () => {
+              this.initStreetView();    
+              this.initMap();
+              }
+            },
+            {
+              text: "ATRÁS",
+              handler : () => {
+                this.navCtrl.pop();
+              }
+            }
+          ]
+        });
+        alert.present();
+    }
 
   atras(){
-    this.navCtrl.pop();
+    const alert = this.alertCtrl.create({
+      title: '¿Estás seguro?',
+      subTitle: 'Perderás todo el progreso',
+      buttons: [
+        {
+          text: "SI",
+          handler : () => {
+            this.navCtrl.pop();      
+          }
+        },
+        {
+          text: "NO",
+        }
+      ]
+    });
+    alert.present();
   }
   
   initStreetView(){
-    //Elegir posicion del array de lugares
     var panorama = new google.maps.StreetViewPanorama(
         document.getElementById('streetview'), {
-          position: this.lugar,
+          position: this.posicionLugar,
           pov: {
             heading: 100,
             pitch: 0
@@ -61,104 +121,96 @@ export class JugartodoPage {
       mapTypeId: 'hybrid'
     });
 
-    map.addListener('rightclick', function(e){
-      placeMarker(e.latLng, map);
-    
+    map.addListener('rightclick', (e) => {
+      var latitudlongitudmarcador = this.placeMarker(e.latLng, map);
+      this.latitudmarcador = latitudlongitudmarcador[0];
+      this.longitudmarcador = latitudlongitudmarcador[1];
+      console.log("latitud: " + this.latitudmarcador);
+      console.log("longitud: " + this.longitudmarcador);
     });
-    var marker;
 
-    function placeMarker(latLng, map) {
-      if (marker) {
-        marker.setPosition(latLng);
+    }
+    
+    placeMarker(latLng, map) {
+      if (this.marker) {
+        this.marker.setPosition(latLng);
       } else {
-        marker = new google.maps.Marker({
+        this.marker = new google.maps.Marker({
           position: latLng,
           map: map,
         });
       }
-
       var latitudlongitud = JSON.stringify(latLng);
-      let latlong = JSON.parse(latitudlongitud);
+      var latlong = JSON.parse(latitudlongitud);
+      
       var latitud = latlong.lat;
       var longitud = latlong.lng;
-
-      //this.latitudmarcador = latitud;
-      //this.longitudmarcador = longitud;
-           
-      console.log("latlng: " + latLng);
-      
-    }
+      return [latitud, longitud];
     }
 
     ponermarcador(){
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: this.lugar,
+        center: this.posicionLugar,
         zoom: 4,
         mapTypeId: 'hybrid'
       });
 
       var marker1 = new google.maps.Marker({
-        position: this.lugar, //Posicion street view
+        position: this.posicionLugar, //Posicion street view
         map: map,
         icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
       });
       var marker2 = new google.maps.Marker({
-        position: {lat: 40, lng: 30}, //Posicion marcador
+        position: {lat: this.latitudmarcador, lng: this.longitudmarcador}, //Posicion marcador
         map: map,
-      });      
-    }
-
-
-    siguienteturno(){
-          this.initStreetView();
-          this.initMap();
-    }
-
-
-   aceptar(){
-      this.ponermarcador();
-   }
-
-/*
-      poner marcador en lat1, lon1
-      Trazar una linea
-      this.getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2);
-      if (km > x) {
-        partidamala = true
-        siguiente turno
+      });
+      this.puntospartida = this.getDistanceFromLatLonInKm(this.latlugar,this.lonlugar,this.latitudmarcador,this.longitudmarcador);
+      this.puntospartida = Math.round(this.puntospartida);
+      if(this.puntospartida > 200){
+        this.malapartida = true;
       }
       else{
-        partidabuena = true
-        siguiente turno
+        this.buenapartida = true;
       }
+      this.puntostotales.push(this.puntospartida);
+      console.log(this.puntostotales);
+      
     }
-    Parar el tiempo
-    poner marcador en lat1, lon1
-    Trazar una linea
-    this.getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2);
-    if (km > x) {
-      partidamala = true
-      Final
+
+   aceptar(){
+      console.log(this.latitudmarcador);
+      console.log(this.longitudmarcador);
+
+      this.ponermarcador();
+      this.siguiente = true;
+   }
+
+
+   siguienteturno(){
+    this.turno = this.turno + 1;
+    console.log(this.turno);
+    if(this.turno < 5){
+      var posicionlugares = Math.floor(Math.random() * 29);
+      var lugarelegido = this.lugares[posicionlugares];
+      console.log(lugarelegido);
+      this.latlugar = lugarelegido.lat;
+      this.lonlugar = lugarelegido.lon; 
+      this.posicionLugar = new google.maps.LatLng(this.latlugar,this.lonlugar);
+  
+
+      this.siguiente = false;
+      this.buenapartida = false;
+      this.malapartida = false;
+      this.initStreetView();
+      this.marker = null;
+      this.initMap();
     }
     else{
-      partidabuena = true
-      Final
-
+      this.navCtrl.push(ResultadosPage, {'puntos': this.puntostotales});
+      console.log("FIN");
     }
-  } 
-  
-  
-      siguienteturno(){
-        partidabuena = false
-        partidamala = false
-        initStreetView
-        initmap
-        siguienteturno = false
-        reiniciar tiempo
-      }
-
-
-
+    
+  }
 
   //Funciones para calcular la distancia entre puntos
   getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -177,5 +229,5 @@ export class JugartodoPage {
 
    deg2rad(deg) {
     return deg * (Math.PI/180)
-   }*/
+   }
 }

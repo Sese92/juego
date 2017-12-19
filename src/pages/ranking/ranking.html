@@ -23,18 +23,24 @@
       País
     </ion-col>
     <ion-col align="center">
+      Mejor Puntuación
+    </ion-col>
+    <ion-col align="center">
       Puntuación media
     </ion-col>
   </ion-row>
-  <ion-row class="fila">
+  <ion-row *ngFor="let usuario of usuarios; let i = index" class="fila">
       <ion-col align="center">
-        Jose
+        {{usuario.userName}}
       </ion-col>
       <ion-col align="center">
-        España
+        {{usuario.pais}}
       </ion-col>
       <ion-col align="center">
-        50
+        {{usuario.mejorpuntuacion}}
+      </ion-col>
+      <ion-col align="center">
+        {{usuario.mediapuntos}}
       </ion-col>
     </ion-row>
   </ion-grid>

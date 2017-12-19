@@ -16,15 +16,19 @@ import { updateDate } from 'ionic-angular/util/datetime-util';
 export class PerfilPage {
   user: any;
   passText: boolean;
-  public puntuacion: any;
+  public puntuaciones: Array<any>;
   private currentUser: firebase.User;
   public nombreUser: string;
   public email: string;
   public pais: string;
   public password: string;
+  public amigos;
   public usuarios: Array<any>;
   public posicion: number;
   public modificar: boolean;
+  public mejorpuntuacion;
+  public segundamejor;
+  public tercera;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public afDB: AngularFireDatabase,
@@ -46,13 +50,21 @@ export class PerfilPage {
         this.usuarios.forEach(usuario => {
           if (usuario.email === correo) {
             this.pais = usuario.pais;
-            this.puntuacion = usuario.puntuacion;
+            this.puntuaciones = usuario.puntuaciones;
             this.nombreUser = usuario.userName;
             this.user = usuario.userName;
             this.email = usuario.email
             this.password = usuario.password;
+            this.amigos = usuario.amigos;
           }
         });
+
+        this.puntuaciones = this.puntuaciones.filter(item => item !== 'null');
+        this.puntuaciones = this.puntuaciones.sort();
+        this.puntuaciones = this.puntuaciones.reverse();
+        this.mejorpuntuacion = this.puntuaciones[0];
+        this.segundamejor = this.puntuaciones[1];
+        this.tercera = this.puntuaciones[2];
       },
       error => {
         console.log("ERROR")
@@ -77,7 +89,9 @@ export class PerfilPage {
       "pais": this.pais,
       "userName": this.nombreUser,
       "email": this.email,
-      "password": this.password
+      "password": this.password,
+      "puntuaciones": this.puntuaciones,
+      "amigos": this.amigos
     }
     this.afDB.database.refFromURL('https://juegois2-dima.firebaseio.com/usuarios/' + this.user).remove();
     this.afDB.database.refFromURL('https://juegois2-dima.firebaseio.com/usuarios/' + this.nombreUser).update(datos);

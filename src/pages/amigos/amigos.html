@@ -1,19 +1,43 @@
 
 <ion-content padding class="fondo">
-    <header>
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                        <img src="assets/images/atras.png" (click)="atras()" class="atras">
-                </ion-col>
-                <ion-col>
-                        <h1 class="h1" align="center">Amigos </h1>                             
-                </ion-col>
-                <ion-col align="right">
-                        <img src="assets/images/add_friend.png" class="addfriend">
-                        <p class="textoadd">Añadir amigos</p>                        
-                </ion-col>
+        <header>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                                <img src="assets/images/atras.png" (click)="atras()" class="atras">
+                        </ion-col>
+                        <ion-col>
+                                <h1 class="h1" align="center">Amigos</h1>                             
+                        </ion-col>
+                        <ion-col>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>     
+            </header>
+    <ion-grid class="grid2">
+            <ion-row class="titulos">
+            <ion-col align="center">
+              Nombre
+            </ion-col>
+            <ion-col align="center">
+              País
+            </ion-col>
+            <ion-col>
+
+            </ion-col>
+
+          </ion-row>
+          <ion-row *ngFor="let usuario of usuarios; let i = index" class="fila">
+              <ion-col align="center">
+                {{usuario.userName}}
+              </ion-col>
+              <ion-col align="center">
+                {{usuario.pais}}
+              </ion-col>
+              <ion-col align="center">
+                  <p style="margin: 0px; color: rgb(255, 102, 0)" *ngIf="usuario.esamigo === false" (click)="agregar(i)">Agregar</p>
+                  <p style="margin: 0px; color: green" *ngIf="usuario.esamigo === true">Amigo</p>
+              </ion-col>
             </ion-row>
-        </ion-grid>  
-    </header>
+          </ion-grid>
 </ion-content>

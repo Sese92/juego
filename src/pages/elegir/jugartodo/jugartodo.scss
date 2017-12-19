@@ -12,6 +12,7 @@ page-jugartodo {
         border-color: black;
         border-style: solid;
         border-radius: 4px;
+        margin-bottom: 0.5%;
     }
     #map {
         position: absolute;
@@ -76,18 +77,27 @@ page-jugartodo {
           width: 500px;
           height: 100px;
           margin-top: -75px;
-          margin-left: 6%;
+          margin-left: 15%;
           display: flex;
           
 
           .vaya{
             padding-top: 18px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             }
             .puntos{
                 margin-left: 40px;
-                font-size: 18px;
+                font-size: 20px;
+                margin-top: 40px;
+                
+            }
+            .cantidad{
+                margin-left: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 40px;
+                
             }
       }
       .buenapartida{
@@ -97,35 +107,40 @@ page-jugartodo {
         width: 500px;
         height: 100px;
         margin-top: -75px;
-        margin-left: 6%;
+        margin-left: 15%;
         display: flex;
 
         .vaya{
           padding-top: 18px;
-          font-size: 20px;
+          font-size: 22px;
           font-weight: bold;
           
           }
           .puntos{
-              margin-left: 40px;
-              font-size: 18px;
+              margin-left: 90px;
+              font-size: 20px;
+              margin-top: 40px;
           }
+          .cantidad{
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 40px;
+            
+        }
     }
 
       .siguiente{
         font-size: 18px;
         font-weight: bold;
-        margin-top: -5%;
-        margin-left: 45%;
+        margin-top: -7%;
+        margin-left: 77%;
         width: 150px;
         height: 40px;
         background-color: rgb(255, 255, 255);
         border-radius: 20px;
 
     }
-
-
-
 
       //Quitar textos e iconos del mapa
       .a, button{

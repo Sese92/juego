@@ -4,13 +4,13 @@ export class User{
         public email:string,
         public password:string,
         public pais:string,
-        public puntuacion:Array<number>,
-        public amigos:Array<Amigo>
+        public puntuaciones:Array<any>,
+        public amigos:Array<any>
     ){}
 }
 export class Amigo{
     constructor(
         public userName:string,
-        public puntuacion:number
+        public puntuaciones:Array<any>,
     ){}
 }

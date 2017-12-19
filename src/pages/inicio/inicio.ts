@@ -34,7 +34,7 @@ export class InicioPage {
 
   public ionViewDidLoad() {
     var estado = firebase.auth().currentUser.email;
-    console.log(estado);    
+    console.log(estado);
   }
 
    public logout(){
