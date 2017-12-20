@@ -39,7 +39,7 @@
   </ion-row>
   <ion-row class="fila">
       <ion-col align="center">
-        <img src="assets/images/europa.png" class="imagenes">
+        <img src="assets/images/europa.png" [navPush]="europa" class="imagenes">
       </ion-col>
       <ion-col align="center">
         <img src="assets/images/africa.png" class="imagenes">
@@ -49,7 +49,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="filatexto">
-      <ion-col align="center">
+      <ion-col align="center" [navPush]="europa">
         EUROPA
       </ion-col>
       <ion-col align="center">

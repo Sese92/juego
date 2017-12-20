@@ -1,0 +1,27 @@
+<ion-content class="fondo">
+      <header>
+          <ion-grid>
+            <ion-row>
+                <ion-col>
+                </ion-col>
+                <ion-col>
+                        <h1 class="h1" align="center">Resultados de la partida</h1>
+                </ion-col>
+                <ion-col>
+                </ion-col>
+            </ion-row>
+        </ion-grid> 
+        </header>
+        <ion-grid class="resultados">
+          <ion-row *ngFor="let puntos of puntostotales; let i = index">
+            <p class="puntos">Puntos en la ronda {{i+1}}: {{puntos}}</p>
+          </ion-row>
+          <ion-row>
+            <p class="puntostotales">Puntos Totales: {{sumapuntos}}</p>
+          </ion-row>
+        </ion-grid>
+        <ion-row style="width: 100%; align-content: center">
+            <button class="aceptar" ion-button (click)="aceptar()">Aceptar</button>
+        </ion-row>
+    </ion-content>
+  

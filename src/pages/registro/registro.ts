@@ -16,7 +16,8 @@ export class RegistroPage{
   public myForm: FormGroup;
   public loading: Loading;
   public usuario: User;
-  public amigos:Array<Amigo>;
+  public amigos;
+  public puntuaciones;
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
@@ -48,8 +49,8 @@ export class RegistroPage{
                                 this.myForm.value.email,
                                 this.myForm.value.password,
                                 this.myForm.value.pais,
-                                [],
-                                this.amigos = []);
+                                this.puntuaciones = ['null'],
+                                this.amigos = ['null']);
         this.fireDatabase.database.ref('usuarios/' + this.myForm.value.userName).set(this.usuario);
         this.navCtrl.push(HomePage);
       }, error => {

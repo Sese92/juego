@@ -12,6 +12,8 @@ page-jugartodo {
         border-color: black;
         border-style: solid;
         border-radius: 4px;
+        margin-bottom: 0.5%;
+        position: absolute !important;
     }
     #map {
         position: absolute;
@@ -41,32 +43,18 @@ page-jugartodo {
       .aceptar{
           font-size: 25px;
           font-weight: bold;
-          margin-top: 26%;
-          margin-left: 77%;
-          width: 150px;
-          height: 50px;
+          top: 78%;
+          left: 77%;
+          width: 12%;
+          height: 10%;
           background-color: rgb(0, 255, 42);
           display: block;
           border-radius: 50px;
           border-width: 2px;
           border-color: black;
           border-style: solid;
+          position: relative;
 
-      }
-
-      .tiempo {
-        color: white;
-        text-align: center;
-        font-size: 20px;
-        margin-top: 1%;
-        margin-left: 67%;
-        padding: 0px;
-        width: 32%;
-        height: 15%;
-        border-width: 2px;
-        border-color: white;
-        border-style: solid;
-        border-radius: 20px;
       }
 
       .malapartida{
@@ -75,19 +63,27 @@ page-jugartodo {
           border-radius: 20px;
           width: 500px;
           height: 100px;
-          margin-top: -75px;
-          margin-left: 6%;
+          margin-left: 15%;
           display: flex;
           
 
           .vaya{
             padding-top: 18px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             }
             .puntos{
                 margin-left: 40px;
-                font-size: 18px;
+                font-size: 20px;
+                margin-top: 40px;
+                
+            }
+            .cantidad{
+                margin-left: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                margin-top: 40px;
+                
             }
       }
       .buenapartida{
@@ -96,36 +92,40 @@ page-jugartodo {
         border-radius: 20px;
         width: 500px;
         height: 100px;
-        margin-top: -75px;
-        margin-left: 6%;
+        margin-left: 15%;
         display: flex;
 
         .vaya{
           padding-top: 18px;
-          font-size: 20px;
+          font-size: 22px;
           font-weight: bold;
           
           }
           .puntos{
-              margin-left: 40px;
-              font-size: 18px;
+              margin-left: 90px;
+              font-size: 20px;
+              margin-top: 40px;
           }
+          .cantidad{
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 40px;
+            
+        }
     }
 
       .siguiente{
         font-size: 18px;
         font-weight: bold;
-        margin-top: -5%;
-        margin-left: 45%;
-        width: 150px;
-        height: 40px;
+        margin-left: 76%;
+        width: 14%;
+        height: 6%;
         background-color: rgb(255, 255, 255);
         border-radius: 20px;
+        position: absolute;
 
     }
-
-
-
 
       //Quitar textos e iconos del mapa
       .a, button{

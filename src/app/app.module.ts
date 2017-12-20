@@ -19,7 +19,8 @@ import { AmigosPage } from '../pages/amigos/amigos';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { ForoPage } from '../pages/foro/foro';
 import { HomePage } from '../pages/home/home';
-import { RegistroPage } from '../pages/registro/registro'
+import { RegistroPage } from '../pages/registro/registro';
+import { ResultadosPage } from '../pages/elegir/jugartodo/resultados/resultados';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HttpModule } from '@angular/http';
 
@@ -36,7 +37,8 @@ import { HttpModule } from '@angular/http';
     PerfilPage,
     ForoPage,
     HomePage,
-    RegistroPage
+    RegistroPage,
+    ResultadosPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { HttpModule } from '@angular/http';
     PerfilPage,
     ForoPage,
     HomePage,
-    RegistroPage
+    RegistroPage,
+    ResultadosPage
   ],
   providers: [
     StatusBar,

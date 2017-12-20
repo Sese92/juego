@@ -9,6 +9,7 @@ import { ForoPage } from '../foro/foro';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -34,7 +35,7 @@ export class InicioPage {
 
   public ionViewDidLoad() {
     var estado = firebase.auth().currentUser.email;
-    console.log(estado);    
+    console.log(estado);
   }
 
    public logout(){
@@ -47,7 +48,7 @@ export class InicioPage {
           role: 'SI',
           handler : () => {
             this.auth.auth.signOut();
-            this.navCtrl.popToRoot();
+            this.navCtrl.setRoot(HomePage);
           }
         },
         {
