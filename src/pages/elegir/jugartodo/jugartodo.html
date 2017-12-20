@@ -16,25 +16,32 @@
       </ion-grid> 
       </header>
 
-  <div #streetview id="streetview"></div>
+      <ion-grid no-padding style="height: 67%">
+        <ion-row no-padding style="height: 100%">
+          <div #streetview id="streetview"></div>
+          <div #map id="map"></div>
+          <button class="aceptar" (click)="aceptar()">Aceptar</button>
+        </ion-row>
+      </ion-grid>
 
-  <div #map id="map"></div>
-  
-  <button class="aceptar" (click)="aceptar()">Aceptar</button>
+      <ion-grid no-padding style="height: 15%">
+        <ion-row no-padding style="height: 100%">
+            <div class="buenapartida" [style.display]="buenapartida ? 'flex' : 'none'">
+                <p class="vaya">¡Bien hecho!</p>
+                <div style="display:flex">
+                  <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
+                </div>
+              </div>
+              <div class="malapartida" [style.display]="malapartida ? 'flex' : 'none'">
+                  <p class="vaya">¡Vaya! ¡Un poco lejos!</p>
+                  <div style="display:flex">
+                    <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
+                  </div>
+                </div>
+            
+              <button *ngIf="turno != 4"class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Siguiente turno</button>    
+              <button *ngIf="turno == 4" class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Finalizar</button>
+        </ion-row>
+      </ion-grid>
 
-  <div class="buenapartida" [style.display]="buenapartida ? 'flex' : 'none'">
-    <p class="vaya">¡Bien hecho!</p>
-    <div style="display:flex">
-      <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
-    </div>
-  </div>
-  <div class="malapartida" [style.display]="malapartida ? 'flex' : 'none'">
-      <p class="vaya">¡Vaya! ¡Un poco lejos!</p>
-      <div style="display:flex">
-        <p class="puntos">Puntos del turno {{turno+1}}:</p><p class="cantidad"> {{puntospartida}}</p>
-      </div>
-    </div>
-
-  <button *ngIf="turno != 4"class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Siguiente turno</button>    
-  <button *ngIf="turno == 4" class="siguiente" (click)="siguienteturno()" [style.display]="siguiente ? 'block' : 'none'">Finalizar</button>
 </ion-content>

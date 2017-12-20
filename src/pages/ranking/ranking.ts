@@ -35,9 +35,8 @@ export class RankingPage {
           usuario.mejorpuntuacion = Math.min.apply(null,puntuaciones);
           if(usuario.mejorpuntuacion == "Infinity"){
           usuario.mejorpuntuacion = "-";
+          console.log(usuario.mejorpuntuacion);
         }
-
-
         });
       },
       error => {

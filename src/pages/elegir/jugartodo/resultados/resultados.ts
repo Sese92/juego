@@ -17,6 +17,10 @@ export class ResultadosPage {
   public usuarios: Array<any>;
   public nombreUser: string;
   public puntuaciones;
+  public email;
+  public password;
+  public amigos;
+  public pais;
   
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -37,6 +41,10 @@ export class ResultadosPage {
         this.usuarios.forEach(usuario => {
           if (usuario.email === correo) {
             this.nombreUser = usuario.userName;
+            this.pais = usuario.pais;
+            this.email = usuario.email;
+            this.password = usuario.password;
+            this.amigos = usuario.amigos;
             this.puntuaciones = usuario.puntuaciones;
             this.puntuaciones.push(this.sumapuntos);
             console.log(this.puntuaciones);
@@ -49,10 +57,14 @@ export class ResultadosPage {
   });
 }
 
-
   aceptar(){
      var datos = {
-      "puntuaciones": this.puntuaciones 
+      "username": this.nombreUser,
+      "puntuaciones": this.puntuaciones,
+      "email": this.email,
+      "password": this.password,
+      "pais": this.pais,
+      "amigos": this.amigos
     }
     this.afDB.database.refFromURL('https://juegois2-dima.firebaseio.com/usuarios/' + this.nombreUser).update(datos);
     

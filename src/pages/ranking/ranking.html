@@ -25,9 +25,6 @@
     <ion-col align="center">
       Mejor Puntuación
     </ion-col>
-    <ion-col align="center">
-      Puntuación media
-    </ion-col>
   </ion-row>
   <ion-row *ngFor="let usuario of usuarios; let i = index" class="fila">
       <ion-col align="center">
@@ -38,9 +35,6 @@
       </ion-col>
       <ion-col align="center">
         {{usuario.mejorpuntuacion}}
-      </ion-col>
-      <ion-col align="center">
-        {{usuario.mediapuntos}}
       </ion-col>
     </ion-row>
   </ion-grid>

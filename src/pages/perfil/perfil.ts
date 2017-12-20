@@ -59,9 +59,8 @@ export class PerfilPage {
           }
         });
 
-        this.puntuaciones = this.puntuaciones.filter(item => item !== 'null');
-        this.puntuaciones = this.puntuaciones.sort();
-        this.puntuaciones = this.puntuaciones.reverse();
+        this.puntuaciones = this.puntuaciones.filter(item => item !== 'null');        
+        this.puntuaciones = this.puntuaciones.sort(this.sortNumber);        
         this.mejorpuntuacion = this.puntuaciones[0];
         this.segundamejor = this.puntuaciones[1];
         this.tercera = this.puntuaciones[2];
@@ -71,6 +70,9 @@ export class PerfilPage {
       });
 
   }
+  sortNumber(a,b) {
+    return a - b;
+}
 
   public atras() {
     this.navCtrl.pop();
